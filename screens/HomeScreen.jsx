@@ -8,10 +8,18 @@ import { Ionicons } from '@expo/vector-icons';
 import { pressIcons } from '../colors'
 import { ActivityIndicator } from 'react-native'
 import { fetchFeeds } from '../sanity'
+import { useDispatch, useSelector } from 'react-redux'
+import { SET_FEEDS } from '../context/actions/feedsActions'
+import { Feeds } from '../components'
 
 const HomeScreen = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [isLoading, setisLoading] = useState(false)
+
+  const feeds = useSelector((state) => state.feeds)
+
+
+  const dispatch = useDispatch()
 
 
   const handleSearchTerm = (text) => {
@@ -22,11 +30,14 @@ const HomeScreen = () => {
     setisLoading(true)
     try {
       fetchFeeds().then(res => {
-        console.log(res)
+        // console.log(res)
+        dispatch(SET_FEEDS (res))
+        console.log("Feeds from Store :", feeds?.feeds)
         setInterval(() => {
-          setisLoading (true)
-        }, 1000)
+          setisLoading (false)
+        }, 2000)
       })
+      
     } catch (error) {
       console.log(error)
       setisLoading(false)
@@ -36,7 +47,7 @@ const HomeScreen = () => {
 
 
   return (
-    <SafeAreaView className='flex-1 bg-[#d0ddcf]' >
+    <SafeAreaView className='flex-1 bg-white' >
     <View className="w-full flex-row mt-5 items-center justify-between px-4 py-2" >
     <Entypo name="chevron-left" size={35} color={pressIcons} />
     <Image
@@ -66,7 +77,7 @@ const HomeScreen = () => {
     {/*Scrollable Container Starts*/}
 
     <ScrollView className='flex-1 w-full h-full' >
-      {isLoading ? 
+      {isLoading ?( 
       <View className='flex-1 h-80 items-center justify-center' >
         <ActivityIndicator 
         size={"large"}
@@ -74,8 +85,9 @@ const HomeScreen = () => {
          />
       </View> 
       
-      : 
-      <></>}
+      ):( 
+      <Feeds feeds={feeds?.feeds}/>
+      )}
 
     </ScrollView>
 
