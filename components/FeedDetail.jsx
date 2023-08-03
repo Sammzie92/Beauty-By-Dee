@@ -3,15 +3,23 @@ import React from 'react'
 import { Image } from 'react-native'
 import { iconColor, pressIcons, viewColor } from '../colors'
 import { AntDesign } from '@expo/vector-icons'
+import { useNavigation } from '@react-navigation/native'
 
 const FeedDetail = ({data}) => {
 
     const screenWidth = Math.round(Dimensions.get("window").width)
     const cardWidth = screenWidth / 2 - 20
-    console.log(screenWidth)
+
+    const navigation = useNavigation()
+    const handleClick = () => {
+      navigation.navigate("ProductsScreen", {_id : data?._id})
+
+    }
+    
     
   return (
-    <View className='p-4 m-2 rounded-xl flex items-center justify-center' style={{width: cardWidth, backgroundColor:viewColor}}>
+    <TouchableOpacity onPress={handleClick}
+    className='p-4 m-2 rounded-xl flex items-center justify-center' style={{width: cardWidth, backgroundColor:viewColor}}>
       <Image 
       source={{uri: data?.mainImage?.asset?.url}} 
       resizeMode='contain'
@@ -27,7 +35,7 @@ const FeedDetail = ({data}) => {
         <AntDesign name='heart' size={16} style={{color:iconColor}}  />
       </TouchableOpacity>
       </View>
-    </View>
+    </TouchableOpacity>
   )
 }
 

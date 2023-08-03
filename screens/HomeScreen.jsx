@@ -17,6 +17,7 @@ const HomeScreen = () => {
   const [isLoading, setisLoading] = useState(false)
 
   const feeds = useSelector((state) => state.feeds)
+  const [filtered, setFiltered] = useState(null);
 
 
   const dispatch = useDispatch()
@@ -24,6 +25,7 @@ const HomeScreen = () => {
 
   const handleSearchTerm = (text) => {
     setSearchTerm(text)
+    setFiltered(feeds?.feeds.filter(item => item.title.includes(text)))
   }
 
   useEffect (() => {
@@ -86,7 +88,7 @@ const HomeScreen = () => {
       </View> 
       
       ):( 
-      <Feeds feeds={feeds?.feeds}/>
+      <Feeds feeds={filtered || filtered?.length > 0 ? filtered : feeds?.feeds}/>
       )}
 
     </ScrollView>
