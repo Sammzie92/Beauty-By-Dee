@@ -9,8 +9,8 @@ const BottomTab = ({activeScreen}) => {
     const navigation = useNavigation();
   return (
     <View className='absolute bottom-4 w-full px-8'>
-      <View className='rounded-xl px-4 py-3 w-full flex-row items-center justify-around'
-      style={{backgroundColor:pressIcons}}
+      <View className='rounded-xl px-4 py-3 w-full flex-row items-center justify-around bg-[#555]'
+      
       >
         <TouchableOpacity>
         <FontAwesome5 name="user-alt" size={32} color="black" />

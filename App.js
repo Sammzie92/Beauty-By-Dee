@@ -7,8 +7,10 @@ import "react-native-url-polyfill/auto"
 import { Provider } from 'react-redux';
 import store from './context/store';
 import { BottomTab } from './components';
+import { LogBox } from 'react-native';
+import UserScreen from './screens/UserScreen';
 
-
+LogBox.ignoreLogs(['VirtualizedLists should never be nested inside plain ScrollViews']);
 
 const Stack = createNativeStackNavigator();
 
@@ -35,6 +37,7 @@ const App = () => {
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="ProductsScreen" component={ProductsScreen} />
         <Stack.Screen name="CartScreen" component={CartScreen} />
+        <Stack.Screen name="UserScreen" component={UserScreen} />
       </Stack.Navigator>
       </Provider>
       {activeScreen !== "OnBoarding" && activeScreen !== "CartScreen" && (

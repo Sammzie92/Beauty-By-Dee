@@ -11,10 +11,12 @@ import { EmptyCart } from '../assets'
 import Swipeable from 'react-native-gesture-handler/Swipeable'
 import {GestureHandlerRootView} from "react-native-gesture-handler"
 import { removeFromCart } from '../context/actions/cartActions'
+import { BottomTab } from '../components'
 
 const CartScreen = () => {
     const navigation = useNavigation()
     const [total, setTotal] = useState(0)
+    const [activeScreen, setActiveScreen] = useState(null)
     const cartItems = useSelector ((state) => state.cartItems.cart);
     useEffect (() => {
         let mainTotal = 0;
@@ -46,14 +48,17 @@ const CartScreen = () => {
             </View>
         </View>
         {cartItems.length === 0 || !cartItems ? (
-        <View className='flex-1 items-center w-full justify-center p-4'>
+        <View className='flex-1 w-full justify-center p-4'>
             <Image
             source={EmptyCart}
             className='w-74 h-64 -ml-16'
             resizeMode='contain'
-            />
+            />             
+            
+              <BottomTab activeScreen={activeScreen} />           
 
         </View> 
+        
         )  : (
         <ScrollView className='w-full flex-1' >
             <View className='flex space-y-4'>
