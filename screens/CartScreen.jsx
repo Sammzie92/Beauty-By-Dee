@@ -49,7 +49,7 @@ const CartScreen = () => {
         <View className='flex-1 items-center w-full justify-center p-4'>
             <Image
             source={EmptyCart}
-            className='w-74 h-64'
+            className='w-74 h-64 -ml-16'
             resizeMode='contain'
             />
 
@@ -57,10 +57,12 @@ const CartScreen = () => {
         )  : (
         <ScrollView className='w-full flex-1' >
             <View className='flex space-y-4'>
+                <ScrollView>
                 <FlatList 
                 data={cartItems} 
                 keyExtractor={(item) => item.data._id} 
                 renderItem={({item}) => (<CartItemCard item={item.data} qty={item.qty}/>)}/>
+                </ScrollView>
 
             </View>
             

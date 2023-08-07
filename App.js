@@ -37,8 +37,8 @@ const App = () => {
         <Stack.Screen name="CartScreen" component={CartScreen} />
       </Stack.Navigator>
       </Provider>
-      {activeScreen !== "OnBoarding" && (
-        <BottomTab activeScreen={activeScreen}/>
+      {activeScreen !== "OnBoarding" && activeScreen !== "CartScreen" && (
+        <BottomTab activeScreen={activeScreen} />
       )}
     </NavigationContainer>
   );

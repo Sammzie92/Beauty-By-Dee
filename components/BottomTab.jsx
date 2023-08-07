@@ -21,8 +21,8 @@ const BottomTab = ({activeScreen}) => {
         <TouchableOpacity onPress={() => navigation.navigate("Home")}>
         <FontAwesome5 name="home" size={32} color={activeScreen === "Home" ? "#FFA23A" : "black"} />
         </TouchableOpacity>
-        <TouchableOpacity>
-        <MaterialIcons name="collections" size={32} color="black" /> 
+        <TouchableOpacity >
+        <MaterialIcons name="collections" size={32} color={activeScreen === "ProductScreen" ? "#FFA23A" : "black"} /> 
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate("CartScreen")}>
         <FontAwesome5 name="shopping-basket" size={32} color={activeScreen === "CartScreen" ? "#FFA23A" : "black"} />

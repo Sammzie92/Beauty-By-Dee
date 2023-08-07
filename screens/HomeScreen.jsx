@@ -32,7 +32,7 @@ const HomeScreen = () => {
     setisLoading(true)
     try {
       fetchFeeds().then(res => {
-        // console.log(res)
+       
         dispatch(SET_FEEDS (res))
         
         setInterval(() => {
@@ -49,7 +49,7 @@ const HomeScreen = () => {
 
 
   return (
-    <SafeAreaView className='flex-1 bg-white' >
+    <SafeAreaView className='flex-1 bg-[#f5f5ed]' >
     <View className="w-full flex-row mt-5 items-center justify-between px-4 py-2" >
     <Entypo name="chevron-left" size={35} color={pressIcons} />
     <Image

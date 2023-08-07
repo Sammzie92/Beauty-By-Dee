@@ -11,7 +11,7 @@ const Feeds = ({feeds}) => {
       {feeds?.length > 0 ? (
       <>
       {feeds?.map((item, i) => <FeedDetail key={i} data={item} />)}
-      </> ): (<View className='w-full h-64 flex items-center justify-center'>
+      </> ): (<View className='w-full h-60 flex items-center justify-center'>
         
       <ActivityIndicator 
         size={"large"}

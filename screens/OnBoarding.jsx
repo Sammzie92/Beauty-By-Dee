@@ -22,11 +22,16 @@ const OnBoarding = () => {
 
 
     const handleOnboardingComplete = async(e) => {
-        console.log('Triggered :', e);
+        
         if (e === 2){
            try {
+            // Add a 5-second delay before setting onboarding_complete and navigating to the next screen
+            setTimeout(async () => {
             await AsyncStorage.setItem("@onboarding_complete", "true")
             navigation.navigate("Home");
+
+            }, 5000) // 5 seconds delay (20000 milliseconds)
+            
            } catch (error) {
             console.log("Error Encountered :", error)
             

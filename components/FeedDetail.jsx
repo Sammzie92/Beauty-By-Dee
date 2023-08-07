@@ -19,11 +19,11 @@ const FeedDetail = ({data}) => {
     
   return (
     <TouchableOpacity onPress={handleClick}
-    className='p-4 m-2 rounded-xl flex items-center justify-center' style={{width: cardWidth, backgroundColor:viewColor}}>
+    className='p-4 m-2 rounded-xl flex items-center justify-center bg-white' style={{width: cardWidth}}>
       <Image 
       source={{uri: data?.mainImage?.asset?.url}} 
       resizeMode='contain'
-      className='w-32 h-52'
+      className='w-28 h-40'
       />
       <View className='flex items-start justify-start space-y-1 w-full'>
         <Text className='text-base font-semibold'>{data?.title}</Text>
