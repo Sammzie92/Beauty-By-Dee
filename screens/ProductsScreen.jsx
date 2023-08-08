@@ -102,8 +102,7 @@ const ProductsScreen = ({route}) => {
 
         </View>
       </SafeAreaView>
-      
-      <View className='w-full flex-1 h-auto bg-white rounded-t-[36px] py-2  px-12 space-y-6'>
+      <View className='w-full flex-1 h-full bg-white rounded-t-[36px] py-2  px-12 space-y-6'>
         <View className='w-full items-center justify-between flex-row'>
             <View className='flex items-start justify-center'>
                 <Text className='text-xl font-semibold text-[#555]'>
@@ -140,6 +139,7 @@ const ProductsScreen = ({route}) => {
                 </TouchableOpacity>
 
             </View>
+
 
         </View>
         {cartItems?.cart?.filter((item) => item?.data?._id === data?._id)?.length > 0 ? (            

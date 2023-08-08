@@ -11,12 +11,10 @@ import { fetchFeeds } from '../sanity'
 import { useDispatch, useSelector } from 'react-redux'
 import { SET_FEEDS } from '../context/actions/feedsActions'
 import { Feeds } from '../components'
-import { useNavigation } from '@react-navigation/native'
 
 const HomeScreen = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [isLoading, setisLoading] = useState(false)
-  const navigation = useNavigation()
 
   const feeds = useSelector((state) => state.feeds)
   const [filtered, setFiltered] = useState(null);
@@ -54,14 +52,11 @@ const HomeScreen = () => {
     <SafeAreaView className='flex-1 bg-[#f5f5ed]' >
     <View className="w-full flex-row mt-5 items-center justify-between px-4 py-2" >
     <Entypo name="chevron-left" size={35} color={pressIcons} />
-    <TouchableOpacity onPress={() => navigation.navigate("UserScreen")}>
     <Image
     source={Cover}
     className='w-12 h-12 rounded-xl'
     resizeMode='contain'
-    /> 
-    </TouchableOpacity>
-     
+    />      
     </View>
     {/*Search box starts here*/}
 
